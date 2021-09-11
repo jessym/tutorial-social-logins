@@ -1,0 +1,14 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          auth0:
+            client-id: '${AUTH0_CLIENT_ID:}'
+            client-secret: '${AUTH0_CLIENT_SECRET:}'
+            authorization-grant-type: 'authorization_code'
+            redirect-uri: 'http://localhost:8080/callback.html'
+            scope: [ 'openid', 'profile', 'email' ]
+        provider:
+          auth0:
+            issuer-uri: '${AUTH0_ISSUER_URI:}'

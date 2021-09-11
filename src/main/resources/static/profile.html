@@ -1,0 +1,15 @@
+<!doctype html>
+<body>
+<h1 id="title">Profile</h1>
+<button><a href="/">Home</a></button>
+<script>
+    (async () => {
+        const backend = 'http://localhost:8080';
+        const {session} = await (await fetch(`${backend}/info`)).json();
+
+        const titleElement = document.getElementById('title');
+        titleElement.innerText += ` (session: ${session})`;
+        titleElement.style.color = session ? 'green' : 'red';
+    })();
+</script>
+</body>

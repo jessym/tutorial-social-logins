@@ -1,0 +1,14 @@
+<!doctype html>
+<body>
+<h1>Home</h1>
+<button><a href="/profile.html">Profile</a></button>
+<button id="google-oauth2">Log in with Google</button>
+<button id="twitter">Log in with Twitter</button>
+<script>
+    const backend = 'http://localhost:8080';
+    ['google-oauth2', 'twitter'].forEach(provider => document.getElementById(provider).addEventListener('click', async () => {
+        const {redirectUrl} = await (await fetch(`${backend}/oauth2/authorization/auth0?connection=${provider}`)).json();
+        location.replace(redirectUrl);
+    }));
+</script>
+</body>
